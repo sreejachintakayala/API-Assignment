@@ -1,0 +1,287 @@
+{
+	"info": {
+		"_postman_id": "35eb35c2-32f2-48c9-a9be-82c4b36882e8",
+		"name": "Assignment_API_Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35385044"
+	},
+	"item": [
+		{
+			"name": "User_Tests",
+			"item": [
+				{
+					"name": "Register a New User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Register user verify - response code is 201\", function(){\r",
+									"    const responseCode = pm.response.code;\r",
+									"    pm.expect(201).eql(responseCode);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Register user verify - response status is created\", function(){\r",
+									"    const responseStatus = pm.response.status;\r",
+									"    pm.expect(\"Created\").eql(responseStatus);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Register user verify - response Time\", function(){\r",
+									"    const responseTime = pm.response.responseTime;\r",
+									"    pm.expect(3000).above(responseTime);\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "129d7871168308efdb2a38ab63e8759b246836b82854eed56b2113cabd6dc0b8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"rani\",\r\n    \"lastName\": \"garu\",\r\n    \"age\": \"23\",\r\n    \"username\" : \"rani33\",\r\n    \"password\" : \"ranipass\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dummyjson.com/users/add",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"users",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login as an Existing User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Login user verify - response code is 200\", function(){\r",
+									"    const responseCode = pm.response.code;\r",
+									"    pm.expect(200).eql(responseCode);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Login user verify - response status is OK\", function(){\r",
+									"    const responseStatus = pm.response.status;\r",
+									"    pm.expect(\"OK\").eql(responseStatus);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Login user verify - response Time\", function(){\r",
+									"    const responseTime = pm.response.responseTime;\r",
+									"    pm.expect(3000).above(responseTime);\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"emilys\",\r\n    \"password\": \"emilyspass\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dummyjson.com/auth/login",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User_Posts",
+			"item": [
+				{
+					"name": "Create a Post",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"User post verify - response code is 201\", function(){\r",
+									"    const responseCode = pm.response.code;\r",
+									"    pm.expect(201).eql(responseCode);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"User post verify - response status is created\", function(){\r",
+									"    const responseStatus = pm.response.status;\r",
+									"    pm.expect(\"Created\").eql(responseStatus);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"User post verify - response Time\", function(){\r",
+									"    const responseTime = pm.response.responseTime;\r",
+									"    pm.expect(3000).above(responseTime);\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\" : 10,\r\n    \"title\" : \"My Best Momemnts\",\r\n    \"body\" : \"this is my first best moment in my blife\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dummyjson.com/posts/add",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"posts",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list of Posts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"All post verify - response code is 200\", function(){\r",
+									"    const responseCode = pm.response.code;\r",
+									"    pm.expect(200).eql(responseCode);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"All post verify - response status is OK\", function(){\r",
+									"    const responseStatus = pm.response.status;\r",
+									"    pm.expect(\"OK\").eql(responseStatus);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"All post verify - response Time\", function(){\r",
+									"    const responseTime = pm.response.responseTime;\r",
+									"    pm.expect(3000).above(responseTime);\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/posts",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a post",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Delete a Post verify - response code is 200\", function(){\r",
+									"    const responseCode = pm.response.code;\r",
+									"    pm.expect(200).eql(responseCode);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Delete a Post verify - response status is OK\", function(){\r",
+									"    const responseStatus = pm.response.status;\r",
+									"    pm.expect(\"OK\").eql(responseStatus);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Delete a Post verify - response Time\", function(){\r",
+									"    const responseTime = pm.response.responseTime;\r",
+									"    pm.expect(3000).above(responseTime);\r",
+									"})\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://dummyjson.com/posts/35",
+							"protocol": "https",
+							"host": [
+								"dummyjson",
+								"com"
+							],
+							"path": [
+								"posts",
+								"35"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
